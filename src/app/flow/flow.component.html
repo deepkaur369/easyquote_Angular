@@ -1,0 +1,179 @@
+<div id="main">
+		<div id="modalshow0" >
+			<div class="corner-wrapper" >
+				<div class="corners-top-wrapper">
+					<div class="corners corner--t-l" id="back">
+						 <a routerLink= "Partner">Register as a Partner</a>
+					</div>
+					<div class="corners corner--t-m hidden-xs">
+						<span class="js-sitename" style="margin: 0px; background: none repeat scroll 0px 0px rgb(246, 246, 246); padding: 5px 8px; border-radius: 8px;">
+							How Much to Make website and App</span>
+						&nbsp;
+					</div>
+					<div class="corners corner--t-r" id="once">
+						 <a routerLink= "Customer">Register as a Customer</a>			
+					</div>
+				</div>	
+			</div>
+
+			<div class="content" >
+				<div class="container">
+					<div class="js-page">
+						<div id="hidediv">
+						<div class="question-header text-center"> 
+							<div id="headingques1">
+								<h2>What type of app are you building?</h2>
+							</div>
+							<p id="para">Apple iOS is a better choice to reach a more engaged user base. 
+						Android has a broader reach, however, particularly in emerging markets, 
+						like Asia and Africa.</p>
+						</div>
+
+
+						<div class="question-answers text-center clearfix container-fluid" id="main1" style="margin-top:90px;" >
+							
+							<div *ngFor="let category of categories" class="answer answer-not-selected" id="show1" >
+								<a class="icon-button js-answer" id="rd1"  data-question="type" data-answer="android">
+									<span class="block-thumbnail maxheight col" style="height: 76px;"> 
+										<label for="{{ category.id }}"><i class="icon-3x fa fa-html5" style="cursor:pointer"><i class="circle-border"><input type="radio" name="{{ category.id }}" value="{{ category.name }}" (click)="getservice(category.id)" id="{{ category.id }}" class="circle-border" /></i></i></label>
+										
+									</span>
+									
+								</a>
+								<p class="text-primary">{{ category.name }}</p>
+							</div>
+					</div>
+						<!-- <div class="top-nav clearfix" id="previous" style="float:left"><ul class="nav pull-right top-menu"><li class="dropdown"><a  class="dropdown-toggle" (click)="readCookie()">  Go Previous</a></li></ul></div> -->
+						<div id="lastdiv"></div>
+
+					<div class="question-answers text-center clearfix container-fluid" id="main2" style="margin-top:90px;" >
+							<div *ngFor="let service of services" class="answer answer-not-selected" id="show1" >
+								<a class="icon-button js-answer" id="rd1"  data-question="type" data-answer="android">
+									<span class="block-thumbnail maxheight col" style="height: 76px;"> 
+										<label for="{{ service.id }}"><i class="icon-3x fa fa-html5" style="cursor:pointer"><i class="circle-border"><input type="radio" name="{{ service.id }}" value="{{ service.name }}" (click)="firstQuestionOption(service.id)" id="{{ service.id }}" class="circle-border" /></i></i></label>		
+									</span>
+									
+								</a>
+								<p class="text-primary">{{ service.name }}</p>
+							</div>
+						</div>
+					</div>
+					<div id ="main4" *ngFor="let question of questions" >
+					<div class="question-header text-center">
+							<div id="headingques1" >
+								<h2>{{question.title}}</h2>
+							</div>							
+
+							<p id="para">{{question.question}}</p>
+						</div>
+						
+						
+						<div id="lastdiv"></div>
+						<div class="question-answers text-center clearfix container-fluid" style="margin-top:90px;" >
+							<div class="answer answer-not-selected" id="show1" *ngFor="let option of question.options">
+								
+								<a class="icon-button js-answer" id="rd1"  data-question="type" data-answer="android">
+									<span class="block-thumbnail maxheight col" style="height: 76px;"> 
+										<label for="{{  option.id }}"><i id="optiion{{ option.id }}" class="{{ question.id }} icon-3x fa fa-html5" style="cursor:pointer"><i class="circle-border">
+											<input type="radio" name="option" value="{{ option.name }}" 
+											id="{{ option.id }}" class="{{  question.id }} circle-border" (click)="nextQuestion(option.id,question.id,'')"/></i></i>
+										</label>		
+									</span>	
+								</a>
+								<p class="text-primary">{{ option.name }}</p>
+								
+							</div>      
+								<!-- <span class=" block-thumbnail maxheight col" id = "arrow" style="display: none;">
+								<i class="icon-3x fa fa-arrow-circle-right" style="cursor:pointer;">
+									<i class="circle-border" (click)="nextQuestion()"></i></i></span>	 -->					
+						</div>
+					</div>
+
+						<div  id = "main5" *ngFor="let relation of relations" >
+
+							<div class="question-header text-center">
+								<div id="headingques1" >
+									<h2>{{relation.title}}</h2>
+								</div>							
+
+							<p id="para">{{relation.question}}</p>
+
+							
+						</div>
+						<div class="top-nav clearfix" id="previous" style="float:left"><ul class="nav pull-right top-menu"><li class="dropdown"><a  class="dropdown-toggle" (click)="goPrevious()">Go Previous</a></li></ul></div>
+						<div id="lastdiv"></div>
+						<div class="question-answers text-center clearfix container-fluid" style="margin-top:90px;" >
+							<div class="answer answer-not-selected" id="show1" *ngFor="let option of relation.options">
+								
+								<a class="icon-button js-answer" id="rd1"  data-question="type" data-answer="android">
+									<span class="block-thumbnail maxheight col" style="height: 76px;"> 
+										<label for="{{  option.id }}"><i id="optiion{{ option.id }}" class="{{ relation.id }} icon-3x fa fa-html5" style="cursor:pointer"><i class="circle-border">
+											<input type="radio" name="option" value="{{ option.name }}" 
+											id="{{ option.id }}" class="{{  relation.id }} circle-border" (click)="nextQuestion(option.id,relation.id,'')"/></i></i>
+										</label>		
+									</span>	
+								</a>
+								<p class="text-primary">{{ option.name }}</p>
+								
+							</div>								
+						</div>
+					</div>	
+					<div  id = "show2"  *ngFor="let totalhour of totalhours"  >
+						<div class="estimate col-lg-6 col-md-7 col-sm-10 col-centered text-center fadeIn">
+							<div class="price-container">
+								<h2>{{totalhour.name}}</h2>
+								<h1>Your app estimation </h1>
+								<h2>${{totalhour.price}}</h2>
+							</div>
+						<div id="breakdown" class="js-breakdown"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<style>
+.icon-troph:before {  content: "\f0c2";}
+.fa-apple:before {content: "\f179";}
+.icon-cogd:before {  content: "\f10b";}
+.icon-rockd:before {  content: "\f13b";}
+.icon-beake:before {  content: "\f07a";}
+.fa-android:before {   content: "\f17b";}
+.pluginButton{padding:0 6px!important;margin-top: 6px!important;}
+.timeline-footer{display:none!important;} 
+.pluginCountBox{display:none!important;}
+
+/*
+  Hide radio button (the round disc)
+  we will use just the label to create pushbutton effect
+*/
+input[type=radio] {
+    display:none;
+    //margin:10px;
+}
+ 
+/*
+  Change the look'n'feel of labels (which are adjacent to radiobuttons).
+  Add some margin, padding to label
+*/
+input[type=radio] + label {
+    display:inline-block;
+    //margin:-2px;
+    //padding: 4px 12px;
+   // background-color: #e7e7e7;
+   // border-color: #ddd;
+}
+/*
+ Change background color for label next to checked radio button
+ to make it look like highlighted button
+*/
+input[type=radio]:checked + label {
+  // background-image: none;
+   // background-color:#d0d0d0;
+}
+
+
+
+
+</style>

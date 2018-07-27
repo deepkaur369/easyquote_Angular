@@ -7,8 +7,86 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="http://localhost/Cake_php/easyquote/admin/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="./assets/croppic.js"></script>
+<script src="./assets/croppic_jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href=" http://localhost/Cake_php/easyquote/admin/css/capcha/css/croppic.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" crossorigin="anonymous">
+
+
 </head>
 <body>
   <app-root></app-root>
 </body>
+<script type="text/javascript">
+
+  $(document).ready(function () {
+        
+          $("input").on("keypress", function(e) {
+            var startPos = e.currentTarget.selectionStart;
+            console.log('startPos');
+            console.log(startPos);
+            if (e.which === 32 && startPos==0)
+              e.preventDefault();
+            });
+    });
+
+    var croppicHeaderOptions = {
+  
+      uploadUrl:'http://localhost/Cake_php/easyquote/admin/customers/save_image',
+        
+        cropData:{
+          "dummyData":1,
+          "dummyData2":"asdas"
+        },
+        cropUrl:'http://localhost/Cake_php/easyquote/admin/customers/image_crop',
+        customUploadButtonId:'cropContainerHeaderButton',
+        modal:false,
+        loaderHtml:'<div class="loader bubblingG"><span id="bubblingG_1"></span><span id="bubblingG_2"></span><span id="bubblingG_3"></span></div> ',
+        onBeforeImgUpload: function(){ console.log('onBeforeImgUpload') },
+        onAfterImgUpload: function(){ console.log('onAfterImgUpload') },
+        onImgDrag: function(){ console.log('onImgDrag') },
+        onImgZoom: function(){ console.log('onImgZoom') },
+        onBeforeImgCrop: function(){ console.log('onBeforeImgCrop') },
+        onAfterImgCrop:function(){ console.log('onAfterImgCrop') }
+    } 
+
+  
+  var croppic = new Croppic('croppic', croppicHeaderOptions);
+        
+    var croppicContainerModalOptions = {
+        uploadUrl:'http://localhost/Cake_php/easyquote/admin/customers/save_image',
+        cropUrl:'http://localhost/Cake_php/easyquote/admin/customers/image_crop',
+        modal:true,
+        imgEyecandyOpacity:0.4,
+        loaderHtml:'<div class="loader bubblingG"><span id="bubblingG_1"></span><span id="bubblingG_2"></span><span id="bubblingG_3"></span></div> '
+    }
+    var cropContainerModal = new Croppic('cropContainerModal', croppicContainerModalOptions);
+    
+    
+    var croppicContaineroutputOptions = {
+        uploadUrl:'http://localhost/Cake_php/easyquote/admin/customers/save_image',
+        cropUrl:'http://localhost/Cake_php/easyquote/admin/customers/image_crop', 
+        outputUrlId:'cropOutput',
+        modal:false,
+        loaderHtml:'<div class="loader bubblingG"><span id="bubblingG_1"></span><span id="bubblingG_2"></span><span id="bubblingG_3"></span></div> '
+    }
+    var cropContaineroutput = new Croppic('cropContaineroutput', croppicContaineroutputOptions);
+    
+    var croppicContainerEyecandyOptions = {
+
+        uploadUrl:'http://localhost/Cake_php/easyquote/admin/customers/save_image',
+        cropUrl:'http://localhost/Cake_php/easyquote/admin/customers/image_crop',
+        imgEyecandy:false,
+        loaderHtml:'<div class="loader bubblingG"><span id="bubblingG_1"></span><span id="bubblingG_2"></span><span id="bubblingG_3"></span></div> '
+    }
+    var cropContainerEyecandy = new Croppic('cropContainerEyecandy', croppicContainerEyecandyOptions);</script>
 </html>
